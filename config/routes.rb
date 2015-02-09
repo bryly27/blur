@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'users/index'
+
   root 'intros#index'
+
   get 'intros/index'
+  get 'about' => 'intros#about'
+  get 'how' => 'intros#how'
+  get 'careers' => 'intros#careers'
+  get 'faq' => 'intros#faq'
+  get 'terms' => 'intros#terms'
+
+  get 'new' => 'users#new'
+
+  post 'users' => 'users#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,69 @@
+<% content_for :title do %>
+	Registered
+<% end %>
+
+<% content_for :body do %>
+	<div class="container">
+		<div class='header'>
+	    <div class="navbar-header">
+	      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/"><span class='logo'>Awkyo</span></a>
+	    </div>
+	    <center>
+	      <div class="navbar-collapse collapse" id="navbar-main">
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+          <button type="submit" class="btn btn-default">Sign In</button>
+          </form>
+	      </div>
+	    </center>
+		</div>
+	</div>
+
+
+	<div class='row'>
+		<div class='col-md-6 col-md-offset-1 margin_top_50'>
+			<h1>Thank's for Registering!</h1>
+		</div>
+	</div>
+
+	<div class='row'>
+		<div class='col-md-6 col-md-offset-1 margin_top_50'>
+			<p>Just 1 more step.</p>
+			<p>What would you like others to know about you. Tell whatever you like (ex. interests, hobbies, personal description, etc...)</p>
+			<form role="form">
+		    <div class="form-group">
+		      <label for="comment">Comment:</label>
+		      <textarea class="form-control" rows="5" id="comment"></textarea>
+		    </div>
+		    <input type="submit" value="Register" class="btn btn-info btn-block">
+		    <input name="authenticity_token" value="<%=form_authenticity_token %>" type="hidden">
+		  </form>
+		</div>
+	</div>
+
+
+
+		<div class='container wrapper'>
+			<footer>
+				<div class='container'>
+					<ul class='footer'>
+						<li><a href='/about'>About</a></li>
+ 						<li><a href='/how'>How It Works</a></li>
+ 						<li><a href='/careers'>Careers</a></li>
+ 						<li><a href='/faq'>FAQ</a></li>
+ 						<li><a href='/terms'>Terms</a></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+<% end %>

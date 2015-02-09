@@ -10,32 +10,32 @@
 
 <% content_for :body do %>
 
+<!-- =====================top menu bar========================= -->
 	<div class="container">
-		<!-- =====================top menu bar========================= -->
 		<div class='header'>
 	    <div class="navbar-header">
 	      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#"><span class='logo'>Awkyo</span></a>
+	      <a class="navbar-brand" href="/"><span class='logo'>Awkyo</span></a>
 	    </div>
-		    <center>
-		      <div class="navbar-collapse collapse" id="navbar-main">
-	          <form class="navbar-form navbar-right" role="search">
-	            <div class="form-group">
-	              <input type="text" class="form-control" name="username" placeholder="Username">
-	            </div>
-	            <div class="form-group">
-	              <input type="password" class="form-control" name="password" placeholder="Password">
-	            </div>
-	            <button type="submit" class="btn btn-default">Sign In</button>
-	          </form>
-		      </div>
-		    </center>
-			</div>
+	    <center>
+	      <div class="navbar-collapse collapse" id="navbar-main">
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+          <button type="submit" class="btn btn-default">Sign In</button>
+          </form>
+	      </div>
+	    </center>
 		</div>
+	</div>
 
 		<!-- ===================================body=========================== -->
 
@@ -45,7 +45,7 @@
 
 		<!-- ===========================carousel============================== -->
 
-			    <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+			    <div id="myCarousel" class="carousel slide" data-interval="1500" data-ride="carousel">
 		    	<!-- Carousel indicators -->
 		      <!--   <ol class="carousel-indicators">
 		            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -66,12 +66,48 @@
 		                <div class="carousel-caption">
 		                </div>
 		            </div>
+		            <div class="item pic4">
+		                <div class="carousel-caption">
+		                </div>
+		            </div>
+		            <div class="item pic5">
+		                <div class="carousel-caption">
+		                </div>
+		            </div>
+		            <div class="item pic6">
+		                <div class="carousel-caption">
+		                </div>
+		            </div>
+		            <div class="item pic7">
+		                <div class="carousel-caption">
+		                </div>
+		            </div>
+		            <div class="item pic8">
+		                <div class="carousel-caption">
+		                </div>
+		            </div>
+		            <div class="item pic9">
+		                <div class="carousel-caption">
+		                </div>
+		            </div>
+		            <div class="item pic10">
+		                <div class="carousel-caption">
+		                </div>
+		            </div>
+		            <div class="item pic11">
+		                <div class="carousel-caption">
+		                </div>
+		            </div>
+		            <div class="item pic12">
+		                <div class="carousel-caption">
+		                </div>
+		            </div>
 		        </div>
 		        <!-- Carousel nav -->
-		        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+		        <a class="carousel-control left border" href="#myCarousel" data-slide="prev">
 		            <span class="glyphicon glyphicon-chevron-left"></span>
 		        </a>
-		        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+		        <a class="carousel-control right border" href="#myCarousel" data-slide="next">
 		            <span class="glyphicon glyphicon-chevron-right"></span>
 		        </a>
 		    </div>
@@ -85,48 +121,91 @@
 	    		<div class="panel-heading sign_up_header">
 		    		<h3 class="panel-title">Sign up for free</h3>
 		 			</div>
+		 			<% if flash[:errors] %>
+		 				<p class='error'><%= flash[:errors] %></p>
+		 			<% end %>
 		 			<div class="panel-body">
-		    		<form role="form">
+
+		<!-- ========================register form================== -->
+		    		<form action='/users' method='post' role="form">
 		    			<div class="row">
 		    				<div class="col-xs-6 col-sm-6 col-md-6">
 		    					<div class="form-group">
-		                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+		                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name" value='Bryant'>
 		    					</div>
 		    				</div>
 		    				<div class="col-xs-6 col-sm-6 col-md-6">
 		    					<div class="form-group">
-		    						<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+		    						<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name" value='Yu'>
 		    					</div>
 		    				</div>
 		    			</div>
 
 		    			<div class="form-group">
-		    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+		    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address" value='bryant@bryant.com'>
 		    			</div>
 		    			<div class="form-group">
-		    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Confirm Email Address">
-		    			</div>
-
-		    			<div class="form-group">
-		    				<input type="date" name="birthday" id="birthday" class="form-control input-sm">
+		    				<input type="email" name="email_confirmation" id="email_confirmation" class="form-control input-sm" placeholder="Confirm Email Address" value='bryant@bryant.com'>
 		    			</div>
 
 		    			<div class="row">
 		    				<div class="col-xs-6 col-sm-6 col-md-6">
 		    					<div class="form-group">
-		    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+		    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" value='bryantbryant'>
 		    					</div>
 		    				</div>
 		    				<div class="col-xs-6 col-sm-6 col-md-6">
 		    					<div class="form-group">
-		    						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+		    						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password" value='bryantbryant'>
 		    					</div>
 		    				</div>
-		    			</div>  
+		    			</div>
+
+		    			<div class="form-group">
+    					  <select class="form-control" id="sel1" name='gender'>
+    					  	<option>Gender</option>
+    					  	<option value='female'>Female</option>
+    					  	<option value='male'>Male</option>
+    					  </select>
+		    			</div>
+
+		    			<div class='row'>
+		    				<p class='birthday_info'>Birthday: (must be over 18)</p>
+		    				<div class='col-md-5 birthday1'>
+		    					  <select class="form-control" id="sel1" name='month'>
+		    					  	<option>Month</option>
+	    					     	<% for i in (1..12) %>
+	    					     		<option value='<%= i %>'><%= i %></option> 
+	    					   		<% end %>
+		    					  </select>
+		    				</div>
+		    				<div class='col-md-3 birthday'>
+		    					  <select class="form-control" id="sel1" name='day'>
+		    					  	<option>Day</option>
+    					   	  	<% for i in (1..31) %>
+    					   	  		<option value='<%= i %>'><%= i %></option> 
+    					   			<% end %>
+		    					  </select>
+		    				</div>
+
+		    				<div class='col-md-3 birthday'>
+		    					  <select class="form-control" id="sel1" name='year'>
+		    					  	<option>Year</option>
+		    					  	<% for i in (1900..Time.now.year).reverse_each %>
+		    					  		<option value='<%= i %>'><%= i %></option> 
+		    							<% end %>
+		    					  </select>
+		    				</div>
+		    			</div>
 
 
-		    			<input type="submit" value="Register" class="btn btn-info btn-block btn-custom">
+		    			
+
+		    			<input type="submit" value="Register" class="btn btn-info btn-block btn-custom reg_btn">
+		    			<input name="authenticity_token" value="<%=form_authenticity_token %>" type="hidden">
 		    		</form>
+		   <!-- ===========================end of register form========================= -->
+
 		    	</div>
 	  		</div>
 			</div>
@@ -140,30 +219,25 @@
 				<div class='col-md-3'></div>			
 				<div class='col-md-8'>
 					<ul>
-						<li><span class='glyphicon glyphicon-phone' aria-hidden='true'></span>Talk to someone</li>
-						<li><span class='glyphicon glyphicon-user' aria-hidden='true'></span> See them after 10 days of chatting</li>
+						<li><span class='glyphicon glyphicon-phone' aria-hidden='true'></span>Connect with someone</li>
+						<li><span class='glyphicon glyphicon-user' aria-hidden='true'></span> Unblur their photo</li>
 						<li><span class='glyphicon glyphicon-glass' aria-hidden='true'></span>Plan a meet</li>
 					</ul>
 				</div>
 			</div>
 			<!-- ===============================footer========================== -->
-		<div class='container'>
+		<div class='container wrapper'>
 			<footer>
 				<div class='container'>
 					<ul class='footer'>
-						<li><a href=''>About</a></li>
-						<li><a href=''>How It Works</a></li>
-						<li><a href=''>Careers</a></li>
-						<li><a href=''>FAQ</a></li>
-						<li><a href=''>Terms</a></li>
+						<li><a href='/about'>About</a></li>
+ 						<li><a href='/how'>How It Works</a></li>
+ 						<li><a href='/careers'>Careers</a></li>
+ 						<li><a href='/faq'>FAQ</a></li>
+ 						<li><a href='/terms'>Terms</a></li>
 					</ul>
 				</div>
 			</footer>
 		</div>
-	
-
-			
-
-
 	
 <% end %>
