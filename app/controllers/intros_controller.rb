@@ -1,5 +1,8 @@
 class IntrosController < ApplicationController
   def index
+  	if session[:user_id]
+  		redirect_to '/home'
+ 		end
   end
   def about
   end

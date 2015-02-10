@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'sessions/index'
+
+  get 'profiles/index'
+
   get 'users/index'
 
   root 'intros#index'
@@ -10,10 +14,14 @@ Rails.application.routes.draw do
   get 'careers' => 'intros#careers'
   get 'faq' => 'intros#faq'
   get 'terms' => 'intros#terms'
+  get 'home' => 'awkyos#index'
+  get 'logoff' => 'sessions#destroy'
 
   get 'new' => 'users#new'
 
   post 'users' => 'users#create'
+  post 'profiles' => 'profiles#create'
+  post 'login' => 'sessions#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

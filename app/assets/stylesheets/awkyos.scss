@@ -1,0 +1,48 @@
+.home_side_bar_top {
+	background-color: #80d875;
+	height: 100%;
+	position: static;
+	border-radius: 10px;
+	text-align: center;
+	padding: 10px;
+}
+.home_photo {
+	height: 180px;
+	width: 225px;
+	border-radius: 10px;
+	border: 1px solid black;
+}
+.margin_top_20 {
+	margin-top: 20px;
+}
+.home_side_bar_bottom {
+	background-color: #80d875;
+	height: 100%;
+	position: static;
+	border-radius: 10px;
+	text-align: center;
+	padding: 10px;
+	color: white;
+}
+.home_body {
+	background-color: #80d875;
+	height: 650px;
+	border-radius: 10px;
+	text-align: center;
+	padding: 10px;
+	overflow: scroll;
+}
+.user_profiles img {
+	width: 200px
+}
+.user_photos {
+	-webkit-filter: blur(50px);
+	filter: blur(10px);
+}
+.user_infos {
+	text-align: left;
+}
+.body_row {
+	margin: 10px;
+}
+
