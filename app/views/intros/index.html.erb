@@ -24,6 +24,9 @@
 	    <center>
 	      <div class="navbar-collapse collapse" id="navbar-main">
           <form action='/login' method='post' class="navbar-form navbar-right" role="search">
+          	<% if flash[:error] %>
+          		<label class='red'><%= flash[:error] %></label>
+          	<% end %>
             <div class="form-group">
               <input type="text" class="form-control" name="email" placeholder="Username">
             </div>

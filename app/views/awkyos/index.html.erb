@@ -69,37 +69,23 @@
 
 		    <div class="col-md-9">
 		    	<div class='home_body'>
-			      <div class='row body_row'>
-			      	<div class='col-md-3 user_profiles'>
-			      		<div class='user_photos'>
-			      			<img src="/assets/steven_yeun.jpg">
-			      		</div>
-			      		<h4>Oakland, CA</h4>
-			      	</div>
-			      	<div class='col-md-6 col-md-offset-1 user_infos '>
-			      		<h4><a href="">WalkingDeadFan510</a></h4>
-			      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			      		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			      		...</p>
-			      	</div>
-			      </div>
+				    <div class='row'>
+				    	<% @profiles.each do |profile| %>
+				    	
+				    		<!-- <div class='row body_row'> -->
+				    			<div class='col-md-4 user_profiles'>
+				    				<div class='user_photos'>
+				    					<%= image_tag profile.profile.avatar.url %>
+				    				</div>
+				    				<h5><%= profile.profile.city %>, <%= profile.profile.state %></h5>
+			
+				    			</div>
+				    		<!-- </div> -->
+				    	<% end %>
+				   	</div>
+			      
 
-			      <div class='row body_row'>
-			      	<div class='col-md-3 user_profiles'>
-			      		<div class='user_photos'>
-			      			<img src="/assets/steven_yeun.jpg">
-			      		</div>
-			      		<h4>Oakland, CA</h4>
-			      	</div>
-			      	<div class='col-md-6 col-md-offset-1 user_infos '>
-			      		<h4><a href="">WalkingDeadFan510</a></h4>
-			      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			      		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			      		 ...</p>
-			      	</div>
-			      </div>
-
-			      <div class='row body_row'>
+			      <!-- <div class='row body_row'>
 			      	<div class='col-md-3 user_profiles'>
 			      		<div class='user_photos'>
 			      			<img src="/assets/steven_yeun.jpg">
@@ -159,7 +145,22 @@
 			      	</div>
 			      </div>
 
+			      <div class='row body_row'>
+			      	<div class='col-md-3 user_profiles'>
+			      		<div class='user_photos'>
+			      			<img src="/assets/steven_yeun.jpg">
+			      		</div>
+			      		<h4>Oakland, CA</h4>
+			      	</div>
+			      	<div class='col-md-6 col-md-offset-1 user_infos '>
+			      		<h4><a href="">WalkingDeadFan510</a></h4>
+			      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			      		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			      		 ...</p>
+			      	</div>
+			      </div>
 
+ -->
 
 			    </div>
 		    </div>
