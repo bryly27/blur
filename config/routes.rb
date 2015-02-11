@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :profiles
+
   get 'sessions/index'
 
   get 'profiles/index'
@@ -16,12 +18,15 @@ Rails.application.routes.draw do
   get 'terms' => 'intros#terms'
   get 'home' => 'awkyos#index'
   get 'logoff' => 'sessions#destroy'
-
-  get 'new' => 'users#new'
+  get 'new' => 'profiles#new_photo'
+  get 'new/description' => 'profiles#new_info'
+  get 'awkyo/profile/edit' => 'profiles#edit'
 
   post 'users' => 'users#create'
   post 'profiles' => 'profiles#create'
   post 'login' => 'sessions#create'
+  post 'profiles/update' => 'profiles#create_info'
+  post 'profile/:id/update' => 'profiles#update'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

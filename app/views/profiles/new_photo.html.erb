@@ -1,0 +1,74 @@
+<% content_for :title do %>
+	Submit Photo
+<% end %>
+
+<% content_for :body do %>
+	<div class="container">
+		<div class='header'>
+	    <div class="navbar-header">
+	      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/"><span class='logo'>Awkyo</span></a>
+	    </div>
+	    <center>
+	      <div class="navbar-collapse collapse" id="navbar-main">
+	      </div>
+	    </center>
+		</div>
+	</div>
+
+
+	<div class='row col-md-12'>
+		<div class='col-md-6 col-md-offset-2 margin_top_50'>
+			<h1>Thank's for Registering!</h1>
+		</div>
+	</div>
+
+	<div class='row create_photo_body'>
+		<div class='col-md-6 col-md-offset-2 margin_top_50'>
+			<p>You're almost done. Please upload a photo</p>
+			<form role="form" action='/profiles' method='post' enctype='multipart/form-data'>
+				<div class="form-group">
+				  <label for="comment">Upload a photo: </label>
+				  <% if @photo %>
+					  <% @photo.each do |photo| %>
+					  	<div class='photo'>
+					  		<img src='<%= photo.avatar.url%>'>
+					  	</div>
+					  <% end %>
+					 <% end %>
+				  <input type="file" name='avatar' value="Submit">
+				</div>
+				<br>
+				<br>
+		    <input type="submit" value="Upload Photo" class="btn btn-info btn-block">
+		    <input name="authenticity_token" value="<%=form_authenticity_token %>" type="hidden">
+		  </form>
+		</div>
+		<div class='col-md-3'>
+			<h3><a href="/new/description">Next</a></h3>
+		</div>
+	</div>
+
+
+
+
+
+	<div class='container wrapper'>
+		<footer>
+			<div class='container'>
+				<ul class='footer'>
+				<!-- 	<li><a href='/about'>About</a></li>
+						<li><a href='/how'>How It Works</a></li>
+						<li><a href='/careers'>Careers</a></li>
+						<li><a href='/faq'>FAQ</a></li>
+						<li><a href='/terms'>Terms</a></li> -->
+				</ul>
+			</div>
+		</footer>
+	</div>
+<% end %>
+

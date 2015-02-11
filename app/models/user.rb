@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+	has_one :profile
+
 	email_regex = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
 
 	validates :first_name,    :presence   => true,
@@ -21,7 +24,7 @@ class User < ActiveRecord::Base
 	# validates :password_confirmation,  :presence => true,
 	#           :length               => { :within => 8..100 }
 
-	validates :birthday, :presence => true
+
 
 	
 

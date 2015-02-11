@@ -1,0 +1,82 @@
+<% content_for :title do %>
+	Submit User Info
+<% end %>
+
+
+
+<% content_for :body do %>
+	<div class="container">
+		<div class='header'>
+	    <div class="navbar-header">
+	      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/"><span class='logo'>Awkyo</span></a>
+	    </div>
+	    <center>
+	      <div class="navbar-collapse collapse" id="navbar-main">
+	      </div>
+	    </center>
+		</div>
+	</div>
+
+	<div class='row col-md-12'>
+		<div class='col-md-6 col-md-offset-2 margin_top_50'>
+			<h1>One more step!</h1>
+		</div>
+	</div>
+
+	<div class='row create_photo_body'>
+		<div class='col-md-6 col-md-offset-2 margin_top_50'>
+			<p>Write something about yourself. Anything you want!</p>
+			<form role="form" action='/profiles/update' method='post' enctype='multipart/form-data'>
+					<div class="form-group">
+					  <label for="comment">Location: </label>
+					  <div class="row">
+					  	<div class="col-xs-3">
+					  		<div class="form-group">
+					  			<input type="text" name="city" class="form-control input-sm" placeholder="City">
+					  		</div>
+					  	</div>
+					  	<div class="col-xs-3">
+					  		<div class="form-group">
+					  			<select class="form-control" id="sel1" name='state'>
+	    					  	<option>State</option>
+	    					  	<% @states.each do |x| %>
+	    					  		<option value='<%= x %>'><%= x %></option>
+	    					  	<% end %>
+    					  	</select>
+					  		</div>
+					  	</div>
+					  </div>
+					</div>
+					<div class="form-group">
+					  <label for="comment">Description: </label>
+					  <textarea class="form-control" name='description' rows="5" id="comment"></textarea>
+					</div>
+		    <input type="submit" value="Submit" class="btn btn-info btn-block">
+		    <input name="authenticity_token" value="<%=form_authenticity_token %>" type="hidden">
+		  </form>
+		</div>
+	</div>
+	
+	<div class='container wrapper'>
+		<footer>
+			<div class='container'>
+				<ul class='footer'>
+				<!-- 	<li><a href='/about'>About</a></li>
+						<li><a href='/how'>How It Works</a></li>
+						<li><a href='/careers'>Careers</a></li>
+						<li><a href='/faq'>FAQ</a></li>
+						<li><a href='/terms'>Terms</a></li> -->
+				</ul>
+			</div>
+		</footer>
+	</div>
+
+
+
+
+<% end %>

@@ -27,6 +27,7 @@
 		  	<div class='col-md-3'>
 			    <div class="home_side_bar_top">
 			      <div class='home_photo'>
+			      	<%= image_tag @user.profile.avatar.url %>
 			      </div>
 	    			<!-- Single button -->
 	    			<div class="btn-group margin_top_20">
@@ -34,7 +35,7 @@
 	    			    Profile<span class="caret"></span>
 	    			  </button>
 	    			  <ul class="dropdown-menu" role="menu">
-	    			    <li><a href="#">View/Edit Profile</a></li>
+	    			    <li><a href="/awkyo/profile/edit">View/Edit Profile</a></li>
 	    			    <li><a href="#">Edit User Info</a></li>
 	    			    <li><a href="/logoff">Log Off</a></li>
 	    			  </ul>
