@@ -1,3 +1,8 @@
-// Place all the styles related to the profiles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.user_modal_profile {
+	width: 100%;
+	-webkit-filter: blur(50px);
+	filter: blur(10px);
+}
+.user_modal_description {
+	text-align: left;
+}
