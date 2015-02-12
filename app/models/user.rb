@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-	has_one :profile
+	has_one :profile, dependent: :destroy
 
 	email_regex = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
 

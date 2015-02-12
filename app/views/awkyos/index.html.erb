@@ -2,8 +2,32 @@
 	Awkyo | Home
 <% end %>
 
-<% content_for :body do %>
+<% content_for :jquery do %>
+	<script>
+    $(document).ready(function(){
+      $('#state').bind('change', function () {
+         var url = "/home/search_by_state/" + $(this).val();
+          if (url) {
+              window.location.replace(url);
+          }
+          return false;
+      });
 
+
+      $('#gender').bind('change', function () {
+         var url = "/home/search_by_gender/" + $(this).val();
+          if (url) {
+              window.location.replace(url);
+          }
+          return false;
+      });
+
+
+    });
+	</script>
+<% end %>
+
+<% content_for :body do %>
 	<div class="container">
 		<div class='header'>
 	    <div class="navbar-header">
@@ -26,6 +50,7 @@
 		  <div class="row">
 		  	<div class='col-md-3'>
 			    <div class="home_side_bar_top">
+			    	<h4><a href='/awkyo/profile/edit' data-toggle="modal" ><%= @user.username %></a></h4>
 			      <div class='home_photo'>
 			      	<%= image_tag @user.profile.avatar.url %>
 			      </div>
@@ -36,7 +61,7 @@
 	    			  </button>
 	    			  <ul class="dropdown-menu" role="menu">
 	    			    <li><a href="/awkyo/profile/edit">View/Edit Profile</a></li>
-	    			    <li><a href="#">Edit User Info</a></li>
+	    		<!-- 	    <li><a href="#">Edit User Info</a></li> -->
 	    			    <li><a href="/logoff">Log Off</a></li>
 	    			  </ul>
 	    			</div>
@@ -46,16 +71,37 @@
 			    	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 			    		  Awkyo Match
 			    	</button>
-	    			<div class="form-group margin_top_20">
-	    				<h4>City</h4>
-  					  <select class="form-control" id="sel1" name='gender'>
-  					  	<option>Oakland</option>
-  					  </select>
-	    			</div>
+  	  			<div class="form-group margin_top_20">
+  	  				<form action='/home' method='post'>
+  						  <div class="form-group">
+  						    <a class="btn btn-default" href="/home" role="button">Show All</a>
+  						   </div>
+  						</form>		  
+  	  			</div>
+		  			<div class="form-group margin_top_20">
+		  				<h4>Gender</h4>
+						  <select id="gender" class="form-control" id="sel1" name='gender'>
+						  	<option>Gender</option>
+						  	<option value="male">Male</option>
+						  	<option value="female">Female</option>
+						  </select>
+		  			</div>
+		  			<div class="form-group margin_top_20">
+		  				<h4>City</h4>
+		  				<form action='/home/search_by_city' method='post'>
+							  <div class="form-group">
+							    <input type="text" class="form-control" name="city" placeholder="City">
+							    <input name="authenticity_token" value="<%=form_authenticity_token %>" type="hidden">
+							   </div>
+							</form>		  
+		  			</div>
 	    			<div class="form-group margin_top_20">
 	    				<h4>State</h4>
-  					  <select class="form-control" id="sel1" name='gender'>
-  					  	<option>California</option>
+  					  <select id="state" class="form-control" id="sel1" name='state'>
+  					  	<option>State</option>
+  					  	<% @states.each do |x| %>
+  					  		<option value="<%= x %>"><%= x %></option>
+  					  	<% end %>
   					  </select>
 	    			</div>
 	    			<div class="form-group margin_top_20">
@@ -72,47 +118,46 @@
 				    <div class='row'>
 				    	<% @profiles.each do |profile| %>
 				    		<% now = Time.now.utc.to_date %>
-				    		<% age = now.year - profile.birthday.year %>
+				    		<% age = now.year - profile.user.birthday.year %>
 				    		
 			    			<div id='show_user_info' class='col-md-4 user_profiles'>
-			    				<a href='#<%= profile.username %>' data-toggle="modal" >
+			    				<a href='#<%= profile.user.username %>' data-toggle="modal" >
 				    				<div class='user_photos'>
-				    					<%= image_tag profile.profile.avatar.url %>
+				    					<%= image_tag profile.avatar.url %>
 				    				</div>
-			    				<h5><%= profile.profile.city %>, <%= profile.profile.state %></h5>
-									<h5><%= profile.username %> / <%= age %></h5>
+			    				<h5><%= profile.city %>, <%= profile.state %></h5>
+									<h5><%= profile.user.username %> / <%= age %></h5>
 									</a>
 			    			</div>
 				    
 				    		
 				    		<!-- Modal -->
-			    			<div class="modal fade" id="<%= profile.username %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			    			<div class="modal fade" id="<%= profile.user.username %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			    			  <div class="modal-dialog">
 			    			    <div class="modal-content">
 			    			      <div class="modal-header">
 			    			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			    			        <h4 class="modal-title" id="myModalLabel"><%= profile.username %></h4>
+			    			        <h4 class="modal-title" id="myModalLabel"><%= profile.user.username %></h4>
 			    			      </div>
 			    			      <div class='row'>
 				    			      <div class="modal-body">
 
 				            			<div id='show_user_info' class='col-md-6 user_profiles'>
 				            				<div class='user_modal_profile'>
-				            					<%= image_tag profile.profile.avatar.url %>
+				            					<%= image_tag profile.avatar.url %>
 				            				</div>
-				            				<h5><%= profile.profile.city %>, <%= profile.profile.state %></h5>
-				        						<h5><%= profile.username %> / <%= age %></h5>
+				            				<h5><%= profile.city %>, <%= profile.state %></h5>
+				        						<h5><%= profile.user.username %> / <%= age %></h5>
 				            			</div>
 				            			<div class='col-md-6 user_modal_description' >
-				            				<p><%= profile.profile.description %></p>
+				            				<p><%= profile.description %></p>
 				            			</div>
 
 				    			      </div>
 				    			    </div>
 			    			      <div class="modal-footer">
-			    			      	<button type="button" class="btn btn-primary">Message Now</button>
-			    			        <button type="button" class="btn btn-default" data-dismiss="modal">Close
-			    			        
+			    			      	<button type="button" class="btn btn-primary message_now" data-dismiss="modal" value='<%= profile.user.username %>'>Message Now</button>
+			    			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			    			      </div>
 			    			    </div>
 			    			  </div>
@@ -120,84 +165,7 @@
 
 				    	<% end %>
 				   	</div>
-			      
-
-			      <!-- <div class='row body_row'>
-			      	<div class='col-md-3 user_profiles'>
-			      		<div class='user_photos'>
-			      			<img src="/assets/steven_yeun.jpg">
-			      		</div>
-			      		<h4>Oakland, CA</h4>
-			      	</div>
-			      	<div class='col-md-6 col-md-offset-1 user_infos '>
-			      		<h4><a href="">WalkingDeadFan510</a></h4>
-			      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			      		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			      		 ...</p>
-			      	</div>
-			      </div>
-
-			      <div class='row body_row'>
-			      	<div class='col-md-3 user_profiles'>
-			      		<div class='user_photos'>
-			      			<img src="/assets/steven_yeun.jpg">
-			      		</div>
-			      		<h4>Oakland, CA</h4>
-			      	</div>
-			      	<div class='col-md-6 col-md-offset-1 user_infos '>
-			      		<h4><a href="">WalkingDeadFan510</a></h4>
-			      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			      		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			      		 ...</p>
-			      	</div>
-			      </div>
-
-			      <div class='row body_row'>
-			      	<div class='col-md-3 user_profiles'>
-			      		<div class='user_photos'>
-			      			<img src="/assets/steven_yeun.jpg">
-			      		</div>
-			      		<h4>Oakland, CA</h4>
-			      	</div>
-			      	<div class='col-md-6 col-md-offset-1 user_infos '>
-			      		<h4><a href="">WalkingDeadFan510</a></h4>
-			      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			      		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			      		 ...</p>
-			      	</div>
-			      </div>
-
-			      <div class='row body_row'>
-			      	<div class='col-md-3 user_profiles'>
-			      		<div class='user_photos'>
-			      			<img src="/assets/steven_yeun.jpg">
-			      		</div>
-			      		<h4>Oakland, CA</h4>
-			      	</div>
-			      	<div class='col-md-6 col-md-offset-1 user_infos '>
-			      		<h4><a href="">WalkingDeadFan510</a></h4>
-			      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			      		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			      		 ...</p>
-			      	</div>
-			      </div>
-
-			      <div class='row body_row'>
-			      	<div class='col-md-3 user_profiles'>
-			      		<div class='user_photos'>
-			      			<img src="/assets/steven_yeun.jpg">
-			      		</div>
-			      		<h4>Oakland, CA</h4>
-			      	</div>
-			      	<div class='col-md-6 col-md-offset-1 user_infos '>
-			      		<h4><a href="">WalkingDeadFan510</a></h4>
-			      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			      		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			      		 ...</p>
-			      	</div>
-			      </div>
-
- -->
+			    
 
 			    </div>
 		    </div>
@@ -206,6 +174,22 @@
 
 
 		  </div>
+		</div>
+	</div>
+
+	<!-- ==============chatbox=============== -->
+	<div class='row'>
+		<div class='chatbox col-md-12 col-md-offset-8'>
+			<div class='chatbox_header'>
+				<center><p class='chatbox_username'></p></center>
+			</div>
+			<div class='chatbox_body'>
+
+			</div>
+			<div class='chatbox_form'>
+		
+					<input type='text'>
+						</div>
 		</div>
 	</div>
 

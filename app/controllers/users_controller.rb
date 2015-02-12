@@ -10,8 +10,9 @@ class UsersController < ApplicationController
   	if age < 18
   		flash[:errors] = "You are not old enough to join"
   		redirect_to '/'
+
   	else
-  		birthday = params[:month] + "/" + params[:day] + "/" +params[:year]
+  		birthday = params[:month] + "/" + params[:day] + "/" + params[:year]
   		@user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], gender: params[:gender], birthday: birthday, username: params[:username])
   		if @user.save
   			session[:registered] = true
@@ -19,7 +20,8 @@ class UsersController < ApplicationController
   		  redirect_to '/new'
   		else
   		  flash[:errors] = @user.errors.full_messages
-  			redirect_to '/'
+  			# redirect_to '/'
+        render 'intros/index'
   		end
   	end
   end

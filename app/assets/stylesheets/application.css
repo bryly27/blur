@@ -1,3 +1,25 @@
 //=require 'intros'
 //=require 'awkyos'
 //=require 'profiles'
+
+.chatbox {
+	border: 2px solid black;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 200px;
+	height: 220px;
+}
+.message_box {
+	overflow: scroll;
+}
+.message_box_form {
+	width: 200px;
+}
+.chatbox_header {
+	border-bottom: 1px solid black;
+	width: 100%;
+	height: 30px;
+}
+.chatbox_body {
+	height: 70%;
+}

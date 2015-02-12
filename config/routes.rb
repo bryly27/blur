@@ -21,12 +21,16 @@ Rails.application.routes.draw do
   get 'new' => 'profiles#new_photo'
   get 'new/description' => 'profiles#new_info'
   get 'awkyo/profile/edit' => 'profiles#edit'
+  get 'home/search_by_state/:id' => 'awkyos#search_by_state'
+  get 'home/search_by_gender/:id' => 'awkyos#search_by_gender'
 
   post 'users' => 'users#create'
   post 'profiles' => 'profiles#create'
   post 'login' => 'sessions#create'
   post 'profiles/update' => 'profiles#create_info'
   post 'profile/:id/update' => 'profiles#update'
+  post 'home/search_by_city' => 'awkyos#search_by_city'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

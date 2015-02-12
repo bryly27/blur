@@ -11,14 +11,34 @@
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src='http://localhost:8080/socket.io/socket.io.js'></script>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= yield :jquery %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var socket = io.connect("http://localhost:8080", {force_connection: true});
+      $('.chatbox').hide();
+
+      $('.message_now').click(function(){
+        var username = $(this).val();
+        $('.chatbox').show();
+        $('.chatbox_username').html(username);
+        $('inpbody').scrollTop(10000)
+      });
+
+      $('.chatbox_form').change(function(){
+        console.log('made it here');
+      })
+      
+
+    });
+  </script>
 </head>
 <body>
 
 <%= yield :body %>
-
+  
 </body>
 </html>

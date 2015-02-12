@@ -27,6 +27,8 @@ gem 'hirb'
 
 gem 'paperclip'
 
+gem 'socket.io-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
